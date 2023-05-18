@@ -1,0 +1,78 @@
+
+# На один день раньше
+# первый день следующего месяца
+# Разница между концом месяца и датой приема
+select *,
+DATE(hire_date,'-1 day'),
+DATE(hire_date, 'start of month', '+1 month', '-1 day'),
+julianday(DATE(hire_date, 'start of month', '+1 month', '-1 day')) - julianday(hire_date) AS prorabotal
+from employees;
+
+
+# Проверка, что значение в поле не NULL, иначе если NULL, то заменяется на 12
+ifnull(commission, 12)
+
+SELECT first_name,
+       ifnull(commission_pct, 0) as isn,
+       ifnull(SUBSTR(first_name, 2), 'name is too short') as ss,
+       commission_pct,
+       salary,
+       ifnull(salary*commission_pct, 500) as bonus1,
+       ifnull(salary*commission_pct, 0) + 400 as bonus2
+  FROM employees;
+
+
+SELECT first_name,
+       commission_pct,
+       salary,
+       nullif(salary, 24000) as nif,
+       nullif(17, 18),
+       nullif(18, 18)
+FROM employees;
+
+SELECT country_id,
+       country_name,
+       IFNULL(NULLIF(country_id, UPPER(SUBSTR(country_name, 1, 2))), 'sovpadenie') as sravnenie
+FROM countries;
+
+
+
+CREATE TABLE sqlitestudio_temp_table AS SELECT *
+                                          FROM employees;
+
+DROP TABLE employees;
+
+CREATE TABLE employees (
+    emloyee_id     INTEGER       PRIMARY KEY
+                                 NOT NULL,
+    first_name     VARCHAR (255),
+    last_name      VARCHAR (255),
+    email          VARCHAR (255),
+    phone_number   VARCHAR (255),
+    hire_date      DATE,
+    job_id         VARCHAR (255),
+    salary         INTEGER,
+    commission_pct INTEGER
+);
+
+INSERT INTO employees (
+                          emloyee_id,
+                          first_name,
+                          last_name,
+                          email,
+                          phone_number,
+                          hire_date,
+                          job_id,
+                          salary,
+                          commission_pct
+                      )
+                      SELECT emloyee_id,
+                             first_name,
+                             last_name,
+                             email,
+                             phone_number,
+                             hire_date,
+                             job_id,
+                             salary,
+                             commission
+                        FROM sqlitestudio_temp_table;
