@@ -1,4 +1,30 @@
 
+
+
+SELECT first_name,      
+CASE LENGTH(first_name) 
+WHEN 3 then 'ochen korotkoe'
+WHEN 5 then 'korotkoe'
+WHEN 6 then 'sredneee'
+WHEN 7 then 'dlinnooe'
+WHEN 8 then 'ochen dlinnoeoe'
+ELSE 'neizvestno'
+END as name
+FROM employees;
+
+
+# Перебор параметров coalesce и возврат первого значения не NULL
+SELECT country_id,
+       country_name,
+       coalesce(country_id, country_name) as sravnenie
+FROM countries;
+
+
+# Разница между двумя датами
+SELECT start_date, end_date, (julianday(end_date)-julianday(start_date))+1 FROM job_history;
+
+
+
 # На один день раньше
 # первый день следующего месяца
 # Разница между концом месяца и датой приема

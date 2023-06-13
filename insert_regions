@@ -1,0 +1,24 @@
+ INSERT INTO regions VALUES
+      ( 10
+      , 'Europe'
+      );
+
+  INSERT INTO regions VALUES
+      ( 20
+      , 'Americas'
+      );
+
+  INSERT INTO regions VALUES
+      ( 30
+      , 'Asia'
+      );
+
+  INSERT INTO regions VALUES
+      ( 40
+      , 'Oceania'
+      );
+
+  INSERT INTO regions VALUES
+      ( 50
+      , 'Africa'
+      );

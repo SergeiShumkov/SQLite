@@ -1,0 +1,133 @@
+SELECT *
+  FROM departments;
+
+SELECT *
+  FROM departments
+ WHERE location_id IN (1700, 2400, 1400);
+
+SELECT *
+  FROM departments
+ WHERE location_id = 1700;
+
+SELECT *
+  FROM employees;
+
+SELECT *
+  FROM employees
+ WHERE commission_pct IS NULL;
+
+SELECT *
+  FROM employees
+ WHERE first_name BETWEEN 'A' AND 'C';
+
+SELECT first_name,
+       last_name,
+       salary
+  FROM employees
+ WHERE salary BETWEEN employee_id + 10000 AND 12008;
+
+SELECT first_name,
+       last_name,
+       salary
+  FROM employees
+ WHERE first_name != 'Steven';
+
+SELECT *
+  FROM employees
+ WHERE 'Dr ' || first_name || ' ' || last_name = 'Dr David Lee';
+
+SELECT *
+  FROM employees
+ WHERE first_name = last_name;
+
+SELECT *
+  FROM employees
+ WHERE employee_id = manager_id + 1000 / 10 + 1;
+
+SELECT *
+  FROM employees
+ WHERE hire_date = '2015-06-25';
+
+SELECT *
+  FROM employees
+ WHERE last_name = 'King';
+
+SELECT first_name,
+       last_name,
+       salary
+  FROM employees
+ WHERE salary = 17000;
+
+SELECT "It's my life";
+
+SELECT 'It''s my life' AS alias;
+
+SELECT 7 * 8;
+
+SELECT 32 * 365 * 24 * 60 * 60 "my age per seconds";
+
+SELECT 'abc' || 'xyz' || (90 * 30);
+
+SELECT first_name fn,
+       last_name,
+       commission_pct AS pct
+  FROM employees;
+
+SELECT 'My name is ' || first_name || ' and my surname is ' || last_name AS name
+  FROM employees;
+
+SELECT 'A' || commission_pct || 'B'
+  FROM employees;
+
+SELECT employee_id || ' ' || salary AS full_name
+  FROM employees;
+
+SELECT *
+  FROM job_history;
+
+SELECT *
+  FROM job_history
+ WHERE job_id IN ('IT_PROG', 'AC_MGR');
+
+SELECT *
+  FROM job_history
+ WHERE end_date IN ('2011-10-27', '2017-12-31');
+
+SELECT *
+  FROM job_history
+ WHERE start_date BETWEEN DATE('2008-01-01') AND DATE('2012-08-01');
+
+SELECT *
+  FROM job_history
+ WHERE job_id = 'ST_CLERK';
+
+SELECT *
+  FROM job_history
+ WHERE DATE(start_date) > DATE('2010-01-01');
+
+;
+
+SELECT start_date,
+       DATE(start_date, '+7 day') 
+  FROM job_history;
+
+SELECT start_date,
+       end_date,
+       julianday(end_date) - julianday(start_date) + 1 AS [Count of days],
+       julianday(end_date) - julianday(start_date) + 1 AS AbCd
+  FROM job_history;
+
+SELECT *
+  FROM job_history;
+
+SELECT salary,
+       salary * 5 / 2 / 10 - 5,
+       salary * 5 / 2 / (10 - 5) 
+  FROM employees;
+
+SELECT *
+  FROM employees;
+
+SELECT commission_pct,
+       commission_pct / 2
+  FROM employees;
